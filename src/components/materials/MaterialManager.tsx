@@ -288,7 +288,12 @@ export default function MaterialManager({ courses, initialMaterials }: MaterialM
           setIsUploading(false);
         }
       } else {
-        alert("Fallo al subir el archivo");
+        try {
+          const errRes = JSON.parse(xhr.responseText);
+          alert(`Error: ${errRes.error || "Fallo al subir el archivo"}`);
+        } catch (e) {
+          alert("Fallo al subir el archivo (Error del servidor)");
+        }
         setIsUploading(false);
       }
     });
