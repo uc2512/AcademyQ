@@ -4,6 +4,8 @@ import { auth } from "@/auth";
 import fs from "fs";
 import path from "path";
 
+export const dynamic = "force-dynamic"; // Force dynamic execution to prevent Vercel environment caching
+
 export async function POST(request: Request): Promise<NextResponse> {
   const session = await auth();
   if (!session?.user?.id) {
@@ -22,12 +24,19 @@ export async function POST(request: Request): Promise<NextResponse> {
 
     const isProduction = process.env.NODE_ENV === "production" || !!process.env.VERCEL;
 
+    // Diagnostic key output for verification (only returning keys, never secret values)
+    const envKeys = Object.keys(process.env).filter(
+      (k) =>
+        k.includes("BLOB") || k.includes("TOKEN") || k.includes("AUTH") || k.includes("DATABASE")
+    );
+
     // 1. If we are in production but there is no Blob Token, we cannot use Vercel Blob
     if (isProduction && !process.env.BLOB_READ_WRITE_TOKEN) {
       return NextResponse.json(
         {
-          error:
-            "Error de Configuración: Vercel Blob no está activo. Si acabas de crear el Storage en Vercel, debes hacer un Redeploy manual en el panel de Vercel para activar las variables de entorno.",
+          error: `Error de Configuración: Vercel Blob no está activo. Variables de entorno detectadas: [${envKeys.join(
+            ", "
+          )}]. Por favor, asegúrate de que BLOB_READ_WRITE_TOKEN esté listado en Settings > Environment Variables en Vercel y haz un Redeploy.`,
         },
         { status: 500 }
       );
@@ -50,7 +59,7 @@ export async function POST(request: Request): Promise<NextResponse> {
           {
             error: `Fallo al subir a Vercel Blob: ${
               blobError instanceof Error ? blobError.message : String(blobError)
-            }`,
+            }. Variables: [${envKeys.join(", ")}]`,
           },
           { status: 500 }
         );
