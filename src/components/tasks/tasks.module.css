@@ -1,0 +1,411 @@
+.headerSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  margin-top: 0.25rem;
+}
+
+/* Tabs & Controls */
+.controlsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.tabs {
+  display: flex;
+  background-color: hsl(var(--secondary));
+  padding: 0.25rem;
+  border-radius: var(--radius);
+  border: 1px solid hsl(var(--border));
+}
+
+.tabBtn {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: hsl(var(--muted-foreground));
+  cursor: pointer;
+  border-radius: calc(var(--radius) - 0.25rem);
+  transition: all var(--transition-fast);
+}
+
+.tabBtnActive {
+  background-color: hsl(var(--card));
+  color: hsl(var(--foreground));
+  box-shadow: var(--shadow-sm);
+}
+
+.filters {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.filterSelect {
+  width: auto;
+  min-width: 140px;
+  padding: 0.4rem 0.75rem;
+}
+
+/* Tasks List Layout */
+.tasksList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.taskItem {
+  padding: 1.25rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+  border-left: 5px solid var(--course-color);
+}
+
+.taskItem:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.taskItemCompleted {
+  opacity: 0.6;
+}
+
+.taskLeft {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex: 1;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 0.35rem;
+  border: 2px solid hsl(var(--border));
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.checkboxChecked {
+  background-color: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.taskContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.taskTitle {
+  font-weight: 600;
+  font-size: 1rem;
+  color: hsl(var(--foreground));
+}
+
+.taskTitleCompleted {
+  text-decoration: line-through;
+  color: hsl(var(--muted-foreground));
+}
+
+.taskDesc {
+  font-size: 0.8rem;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.4;
+}
+
+.taskMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.metaItem {
+  font-size: 0.75rem;
+  color: hsl(var(--muted-foreground));
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.badge {
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badgeHomework {
+  background-color: hsl(210 100% 96%);
+  color: hsl(210 100% 40%);
+}
+.badgeProject {
+  background-color: hsl(280 100% 96%);
+  color: hsl(280 100% 45%);
+}
+.badgeExam {
+  background-color: hsl(0 100% 96%);
+  color: hsl(0 100% 45%);
+}
+.badgePractice {
+  background-color: hsl(140 100% 95%);
+  color: hsl(140 100% 30%);
+}
+
+.taskActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.actionBtn {
+  background: none;
+  border: 1px solid hsl(var(--border));
+  color: hsl(var(--muted-foreground));
+  width: 32px;
+  height: 32px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.actionBtn:hover {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--foreground));
+}
+
+.actionBtnDanger:hover {
+  background-color: hsl(var(--destructive) / 0.1);
+  color: hsl(var(--destructive));
+  border-color: hsl(var(--destructive) / 0.2);
+}
+
+/* Calendar Grid Layout */
+.calendarContainer {
+  background-color: hsl(var(--card) / 0.4);
+  border: 1px solid hsl(var(--border) / 0.5);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.calendarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.monthLabel {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.navRow {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* Mon to Sun */
+  gap: 0.5rem;
+}
+
+.dayOfWeekLabel {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: hsl(var(--muted-foreground));
+  padding-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.calendarCell {
+  min-height: 110px;
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border) / 0.5);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: background-color var(--transition-fast);
+  overflow: hidden;
+}
+
+.calendarCell:hover {
+  background-color: hsl(var(--secondary) / 0.3);
+}
+
+.calendarCellToday {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.15);
+}
+
+.calendarCellOutside {
+  opacity: 0.4;
+  background-color: hsl(var(--background));
+}
+
+.dayNum {
+  font-size: 0.75rem;
+  font-weight: 600;
+  align-self: flex-end;
+}
+
+.cellItems {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+  overflow-y: auto;
+  max-height: 70px;
+}
+
+/* Custom mini scrollbar for cells */
+.cellItems::-webkit-scrollbar {
+  width: 3px;
+}
+.cellItems::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--border));
+  border-radius: 2px;
+}
+
+.cellTask {
+  font-size: 0.65rem;
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-weight: 500;
+  border-left: 2px solid var(--course-color);
+  background-color: hsl(var(--secondary) / 0.6);
+  color: hsl(var(--foreground));
+  cursor: pointer;
+}
+
+.cellTaskCompleted {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.cellClass {
+  font-size: 0.6rem;
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.25rem;
+  background-color: hsl(var(--primary) / 0.05);
+  color: hsl(var(--primary));
+  border-left: 2px solid var(--course-color);
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Responsive calendar */
+@media (max-width: 768px) {
+  .calendarCell {
+    min-height: 80px;
+    padding: 0.25rem;
+  }
+  .cellTask,
+  .cellClass {
+    font-size: 0.55rem;
+    padding: 0.1rem;
+  }
+}
+
+/* Form Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn var(--transition-fast) forwards;
+}
+
+.modal {
+  width: 100%;
+  max-width: 500px;
+  background-color: hsl(var(--card));
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid hsl(var(--border));
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.emptyState {
+  text-align: center;
+  padding: 4rem 2rem;
+  border: 2px dashed hsl(var(--border));
+  border-radius: 1rem;
+  color: hsl(var(--muted-foreground));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
